@@ -16,3 +16,10 @@ test("Return The Number 1 + Number 2", () => {
 test("Return The Number 1 + Number 2 + Number 3", () => {
   expect(theSum(10, 20, 30)).toBe(60);
 });
+
+test("Return The Number 1 + Number 2 + Number 3 + Number 4", () => {
+  expect(theSum(10, 20, 30, 10)).toBe(70);
+});
+test("Return The Sum Result Of All Numbers", () => {
+  expect(theSum(1, 9, 10, 40, 20, 10, 100, 10)).toBe(200);
+});

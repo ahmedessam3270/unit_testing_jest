@@ -3,7 +3,6 @@
 //   return (num1 || 0) + (num2 || null) + (num3 || null);
 // };
 // More modern way (using default parameters)
-const theSum = (num1 = 0, num2 = null, num3 = null) => {
-  return num1 + num2 + num3;
-};
+const theSum = (...numbers) => numbers.reduce((acc, cur) => acc + cur, 0);
+
 module.exports = theSum;

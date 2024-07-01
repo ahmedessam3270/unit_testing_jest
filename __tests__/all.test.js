@@ -88,12 +88,14 @@ expect.extend({
     const pass = received > target;
     if (pass) {
       return {
-        message: `PASSED: expected ${received} to be larger than ${target}`,
+        message: () =>
+          `PASSED: expected ${received} to be larger than ${target}`,
         pass: true,
       };
     } else {
       return {
-        message: `FAILED: expected ${received} to be larger than ${target} but it's not`,
+        message: () =>
+          `FAILED: expected ${received} to be larger than ${target} but it's not`,
         pass: false,
       };
     }
@@ -102,4 +104,27 @@ expect.extend({
 
 test("check if a number is greater than another and using our matcher", () => {
   expect(10).toBeLargerThan(5);
+});
+
+expect.extend({
+  toBeBetween(received, floor, ceiling) {
+    const pass = received > floor && received < ceiling;
+    if (pass) {
+      return {
+        message: () =>
+          `PASS: the received: ${received} is between the two numbers: (${floor},${ceiling})`,
+        pass: true,
+      };
+    } else {
+      return {
+        message: () =>
+          `FAILED: the received: ${received} is not between the two number: (${floor},${ceiling})`,
+        pass: false,
+      };
+    }
+  },
+});
+
+test("check if the number given exists between the two numbers given", () => {
+  expect(4).toBeBetween(2, 19);
 });

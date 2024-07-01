@@ -3,7 +3,6 @@
  * @param {string} name - The name to be filtered.
  * @returns {string} - The filtered name, after applying the modifications.
  */
-
 function fitlerName(name) {
   if (!name) {
     return (name = "Unknown");
@@ -17,6 +16,24 @@ function fitlerName(name) {
   if (name.trim().startsWith("_")) {
     return name.split("_").join("").slice(0, 10);
   }
+  if (name === "hell") {
+    throw new Error("this word is prohipted");
+  }
 }
 
 module.exports = fitlerName;
+
+/*
+when adding the code below and assign these values,
+ the coverage will run with testing itself,
+ and if you want the repoters to be in html only you can assign coverageReporters to "html"
+
+,
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ]
+  }
+
+*/

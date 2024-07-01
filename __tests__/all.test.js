@@ -128,3 +128,26 @@ expect.extend({
 test("check if the number given exists between the two numbers given", () => {
   expect(4).toBeBetween(2, 19);
 });
+
+// expect.anything()
+
+test("check if the received parameter have any data type except for null or undefined", () => {
+  expect(4).toEqual(expect.anything());
+});
+
+// expect.any(Constructor)
+
+test("check if the given element is built with the given constructor", () => {
+  expect(4).toEqual(expect.any(Number));
+  expect("ahmed").toEqual(expect.any(String));
+  expect([1, 2, 3]).toEqual(expect.any(Object));
+  expect(true).toEqual(expect.any(Boolean));
+  expect(null).toEqual(expect.any(Object));
+});
+
+// expect.arrayContaining([])
+
+test("check if the received array contain the elements of another array", () => {
+  const arrayOfNumbers = [1, 2, 3, 4, 5, 6];
+  expect(arrayOfNumbers).toEqual(expect.arrayContaining([5, 2, 4]));
+});

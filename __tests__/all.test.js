@@ -81,3 +81,25 @@ test("check if the an object contains a specific property with a specific value"
   };
   expect(myDetails).toHaveProperty("age", 25);
 });
+
+// trying to create our matcher
+expect.extend({
+  toBeLargerThan(received, target) {
+    const pass = received > target;
+    if (pass) {
+      return {
+        message: `PASSED: expected ${received} to be larger than ${target}`,
+        pass: true,
+      };
+    } else {
+      return {
+        message: `FAILED: expected ${received} to be larger than ${target} but it's not`,
+        pass: false,
+      };
+    }
+  },
+});
+
+test("check if a number is greater than another and using our matcher", () => {
+  expect(10).toBeLargerThan(5);
+});
